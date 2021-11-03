@@ -1,0 +1,28 @@
+div {
+  /* border: 1px solid blue; */
+}
+body {
+  display: flex;
+}
+#sketchpad {
+  border: 2px solid red;
+  width: 960px;
+  height: 960px;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: stretch; */
+}
+
+.row {
+  display: flex;
+  flex: 1 0 auto;
+}
+.cell {
+  flex: 1 0 auto;
+}
+
+.black-colored {
+  background-color: black;
+}
