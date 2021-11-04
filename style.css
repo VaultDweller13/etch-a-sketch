@@ -2,8 +2,19 @@ div {
   /* border: 1px solid blue; */
 }
 body {
+  /* display: flex; */
+  text-align: center;
+}
+
+#main {
   display: flex;
 }
+
+#controls {
+  display: flex;
+  flex-direction: column;
+}
+
 #sketchpad {
   border: 2px solid red;
   width: 960px;
