@@ -1,7 +1,8 @@
 'use strict';
-const sketchpad = document.querySelector('#sketchpad');
-const resetBtn = document.querySelector('#reset');
-const sketchpadSizeRange = document.querySelector('#size');
+const sketchpad = document.getElementById('sketchpad');
+const resetBtn = document.getElementById('reset');
+const sketchpadSizeRange = document.getElementById('size');
+const colorPicker = document.getElementById('color');
 
 createGrid();
 setColorChangeListener();
@@ -32,15 +33,16 @@ function createGrid() {
 }
 
 function changeColor(e) {
-  this.classList.add('black-colored');
+  this.style.backgroundColor = colorPicker.value;
 }
 
 function resetSketch() {
   const gridCells = document.querySelectorAll('.cell');
-  gridCells.forEach(cell => cell.setAttribute('class', 'cell'))
+  gridCells.forEach(cell => cell.style.backgroundColor = 'white')
 }
 
 function setColorChangeListener() {
   const gridCells = document.querySelectorAll('.cell');
   gridCells.forEach(cell => cell.addEventListener('mouseenter', changeColor));
 }
+
