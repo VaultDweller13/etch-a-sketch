@@ -1,29 +1,80 @@
-div {
-  /* border: 1px solid blue; */
+* {
+  margin: 0;
 }
+
+@font-face {
+  font-family: pixelated;
+  src: url(pixeboy.ttf);
+}
+
+/* div, form {
+  border: 1px solid blue;
+} */
+
+#color, #reset {
+  width: 100px;
+  height: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
-  /* display: flex; */
   text-align: center;
+  background-color:#f6f1ef;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+header {
+  background-color: rgb(63, 169, 207);
+  font-family: pixelated;
+  font-size: 2em;
+  height: 10vh;
+  line-height: 10vh;
+}
+
+footer {
+  background-color: rgb(63, 169, 207);
+  height: 5vh;
+  line-height: 5vh;
 }
 
 #main {
+  margin: 32px 0;
+  height: 85vh;
+  flex: 1;
   display: flex;
+  justify-content: center;
 }
 
 #controls {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex: 0 0 auto;
 }
+
+/* #controls label,
+#controls input,
+#controls button {
+  border: 1px solid green;
+} */
 
 #sketchpad {
   border: 2px solid red;
-  width: 960px;
-  height: 960px;
+  width: 800px;
+  height: 800px;
+  margin: 0px 32px;
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* align-items: stretch; */
+  /* justify-content: space-between; */
 }
 
 .row {
@@ -31,6 +82,7 @@ body {
   flex: 1 0 auto;
 }
 .cell {
+  background-color:#ffffff;
   flex: 1 0 auto;
 }
 

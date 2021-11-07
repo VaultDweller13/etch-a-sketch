@@ -10,10 +10,17 @@
     <header>Etch-a-sketch</header>
     <div id='main'>
       <div id='controls'>
-        <label for='range'>Change size</label>
-        <input type='range' id='size' min='16'>
-        <label for='color'>Pick color</label>
-        <input type='color' id='color'>
+        <form>
+          <label for='range'>Change size</label>
+          <input type='range' id='size' min='16'>
+        </form>
+        <form>
+          <label for='color'>Pick color</label>
+          <input type='color' id='color'>
+        </form>
+        <form>
+          <button id='random' type='button'>Random color</button>
+        </form>
         <button id='reset'>Reset sketch</button>
       </div>  
       <div id='sketchpad'></div>

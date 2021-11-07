@@ -3,11 +3,14 @@ const sketchpad = document.getElementById('sketchpad');
 const resetBtn = document.getElementById('reset');
 const sketchpadSizeRange = document.getElementById('size');
 const colorPicker = document.getElementById('color');
+const randomBtn = document.getElementById('random');
+let currentColor = setColorPickerColor;
 
 createGrid();
-setColorChangeListener();
 
 sketchpadSizeRange.addEventListener('input', createGrid);
+randomBtn.addEventListener('click', () => currentColor = setRandomColor);
+colorPicker.addEventListener('click', () => currentColor = setColorPickerColor);
 resetBtn.addEventListener('click', resetSketch);
 
 function createGrid() {
@@ -16,7 +19,6 @@ function createGrid() {
   }
 
   let size = sketchpadSizeRange.value;
-  console.log(size);
   for(let i=0; i < size; i++) {
     let row = document.createElement('div');
     row.setAttribute('class', `row`);
@@ -32,17 +34,28 @@ function createGrid() {
   setColorChangeListener();
 }
 
-function changeColor(e) {
-  this.style.backgroundColor = colorPicker.value;
+function setColorChangeListener() {
+  const gridCells = document.querySelectorAll('.cell');
+  gridCells.forEach(cell => cell.addEventListener('mouseenter', setColor));
+}
+
+function setColor() {
+  this.style.backgroundColor = currentColor();
+}
+
+function setColorPickerColor() {
+  return colorPicker.value;
+}
+
+function setRandomColor() {
+  return `rgb(${getRandom255()}, ${getRandom255()}, ${getRandom255()})`;
+
+  function getRandom255() {
+    return Math.floor(Math.random() * 256);
+  }
 }
 
 function resetSketch() {
   const gridCells = document.querySelectorAll('.cell');
   gridCells.forEach(cell => cell.style.backgroundColor = 'white')
 }
-
-function setColorChangeListener() {
-  const gridCells = document.querySelectorAll('.cell');
-  gridCells.forEach(cell => cell.addEventListener('mouseenter', changeColor));
-}
-
