@@ -7,15 +7,7 @@
   src: url(pixeboy.ttf);
 }
 
-<<<<<<< HEAD
 #color, #reset, #random {
-=======
-/* div, form {
-  border: 1px solid blue;
-} */
-
-#color, #reset {
->>>>>>> db4a7ca6a3fe040b5e881b2b30ea0ad2f70fe015
   width: 100px;
   height: 32px;
 }
@@ -78,10 +70,6 @@ footer {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
-  /* justify-content: space-between; */
->>>>>>> db4a7ca6a3fe040b5e881b2b30ea0ad2f70fe015
 }
 
 .row {
