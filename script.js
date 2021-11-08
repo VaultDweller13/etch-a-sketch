@@ -4,6 +4,7 @@ const resetBtn = document.getElementById('reset');
 const sketchpadSizeRange = document.getElementById('size');
 const colorPicker = document.getElementById('color');
 const randomBtn = document.getElementById('random');
+const shadingBtn = document.getElementById('shading');
 let currentColor = setColorPickerColor;
 
 createGrid();
@@ -11,6 +12,7 @@ createGrid();
 sketchpadSizeRange.addEventListener('input', createGrid);
 randomBtn.addEventListener('click', () => currentColor = setRandomColor);
 colorPicker.addEventListener('click', () => currentColor = setColorPickerColor);
+shadingBtn.addEventListener('click', () => currentColor = setShade);
 resetBtn.addEventListener('click', resetSketch);
 
 function createGrid() {
@@ -26,6 +28,7 @@ function createGrid() {
     for(let j=0; j < size; j++) {
       let div = document.createElement('div');
       div.setAttribute('class', 'cell');
+      div.setAttribute('hsl', '100');
       row.appendChild(div)
     }
     sketchpad.appendChild(row);
@@ -40,14 +43,15 @@ function setColorChangeListener() {
 }
 
 function setColor() {
-  this.style.backgroundColor = currentColor();
+  this.style.backgroundColor = currentColor(this);
 }
 
 function setColorPickerColor() {
   return colorPicker.value;
 }
 
-function setRandomColor() {
+function setRandomColor(element) {
+  element.setAttribute('hsl', '100');
   return `rgb(${getRandom255()}, ${getRandom255()}, ${getRandom255()})`;
 
   function getRandom255() {
@@ -58,4 +62,23 @@ function setRandomColor() {
 function resetSketch() {
   const gridCells = document.querySelectorAll('.cell');
   gridCells.forEach(cell => cell.style.backgroundColor = 'white')
+}
+
+function setShade(element) {
+  // console.log(element);
+  let hsl = element.getAttribute('hsl');
+  
+  if (hsl) {
+    hsl = hsl > 0 ? hsl - 10 : hsl;
+    element.setAttribute('hsl', hsl);
+    return `hsl(0, 0%, ${hsl}%)`;
+  } else if (hsl !=0) {
+    hsl = 90;
+    element.setAttribute('hsl', hsl);
+    return `hsl(0, 0%, 90%)`;
+  } else {
+    element.setAttribute('hsl', '100');
+  }
+  
+  
 }
