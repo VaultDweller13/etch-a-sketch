@@ -20,17 +20,18 @@ function createGrid() {
     sketchpad.removeChild(sketchpad.firstChild);
   }
 
-  let size = sketchpadSizeRange.value;
+  const size = sketchpadSizeRange.value;
   for(let i=0; i < size; i++) {
-    let row = document.createElement('div');
-    row.setAttribute('class', `row`);
+    const row = document.createElement('div');
+    row.classList.add('row');
 
     for(let j=0; j < size; j++) {
-      let div = document.createElement('div');
-      div.setAttribute('class', 'cell');
+      const div = document.createElement('div');
+      div.classList.add('cell');
       div.setAttribute('hsl', '100');
       row.appendChild(div)
     }
+
     sketchpad.appendChild(row);
   }
 
@@ -51,12 +52,10 @@ function setColorPickerColor() {
 }
 
 function setRandomColor(element) {
+  const getRandom255 = () => Math.floor(Math.random() * 256);
+
   element.setAttribute('hsl', '100');
   return `rgb(${getRandom255()}, ${getRandom255()}, ${getRandom255()})`;
-
-  function getRandom255() {
-    return Math.floor(Math.random() * 256);
-  }
 }
 
 function resetSketch() {
@@ -65,8 +64,7 @@ function resetSketch() {
 }
 
 function setShade(element) {
-  // console.log(element);
-  let hsl = element.getAttribute('hsl');
+  const hsl = element.getAttribute('hsl');
   
   if (hsl) {
     hsl = hsl > 0 ? hsl - 10 : hsl;
@@ -79,6 +77,4 @@ function setShade(element) {
   } else {
     element.setAttribute('hsl', '100');
   }
-  
-  
 }
